@@ -67,3 +67,26 @@
 ;(define et (lambda (cond1 cond2) (and cond1 cond2))) ici on évalue les lambda tout de suite et ensuite on teste les conditions. Pour le and c'est evalue dans l'ordre.
 ;(and #f (/ 1 0))
 ;(et #f (/ 1 0))
+
+;exo 3.1
+
+;(define test (lambda (a b) (+ a b)))
+
+;exo 3.2
+
+;18
+
+;exo 3.3
+
+;Vu que les évaluations des var dans le let sont faite en parallèle et pas dans un ordre précis, x n'est pas connu lors du (y (* 2 x)) car x n'a pas encore été alloué bien qu'il soit avant dans les definitions
+;Une solution est d'utiliser le let* qui est séquenciel (c'est fait dans l'ordre de gauche a droite et donc le x sera connu lorsqu'il sera utilisé pour définir y)
+;Une autre solution est de définir x avant et donc lorsque (* 2 x) sera appellé, ce sera le x défini précédemment qui sera appellé
+
+;exo 3.4
+
+;Le programme inverse x et y et les affiche, on remarque que les x et y du let sont liés à ceux de la définition de la fonction et pas à ceux défini au dessus en tant que variables.
+;Si on utilise let* alors on dit que "dans x on met la valeur de y" et ensuite on dit "dans y on met la valeur de x" qui est y. Essentiellement on se retrouve avec x et y qui valent tout les deux y
+
+;exo 3.5
+
+;Ca sort #f#t#t#f. Le principe du letrec c'est qu'on peut utiliser le deuxième truc dans le premier. ex : (letrec (x (+x y)) (y 2) x)
